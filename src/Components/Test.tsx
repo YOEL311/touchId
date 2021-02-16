@@ -17,7 +17,7 @@ export default function Test() {
     <View>
       <Text>{loading ? 'loading' : 'finish'}</Text>
       {list?.map((el) => {
-        return <Text>{el}</Text>;
+        return <Text key={`${Math.random()}`}>{el}</Text>;
       })}
       <Button
         title={'add'}

@@ -21,6 +21,18 @@ export default function FingerPrint() {
       });
   }
 
+  function authenticate() {
+    return TouchID.authenticate()
+      .then((_success: any) => {
+        console.log(_success);
+        Alert.alert('Authenticated Successfully');
+      })
+      .catch((error: {message: any}) => {
+        console.log(error);
+        Alert.alert(error.message);
+      });
+  }
+
   return (
     <View style={styles.container}>
       <TouchableHighlight
@@ -53,14 +65,3 @@ const styles = StyleSheet.create({
     backgroundColor: '#0391D7',
   },
 });
-
-function authenticate() {
-  return TouchID.authenticate()
-    .then((_success: any) => {
-      Alert.alert('Authenticated Successfully');
-    })
-    .catch((error: {message: any}) => {
-      console.log(error);
-      Alert.alert(error.message);
-    });
-}
